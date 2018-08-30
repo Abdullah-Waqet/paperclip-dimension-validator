@@ -2,3 +2,4 @@ en:
   errors:
     messages:
       dimension: "must have a %{dimension_type} of %{dimension}px was %{actual_dimension}px"
+      max_dimension: "%{dimension_type} is exceeding the maximum"
