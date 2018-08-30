@@ -2,6 +2,7 @@ module Paperclip
   module Validators
     class AttachmentDimensionsValidator < ActiveModel::EachValidator
       def initialize(options)
+        pp options
         super
       end
 
