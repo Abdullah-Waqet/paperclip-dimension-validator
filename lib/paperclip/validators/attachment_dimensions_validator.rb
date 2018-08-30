@@ -20,6 +20,14 @@ module Paperclip
               record.errors.add(attribute.to_sym, :dimension, dimension_type: dimension.to_s, dimension: options[dimension], actual_dimension: dimensions.send(dimension).to_i)
             end
           end
+
+          if options[:max_height] && options[:max_height] < dimensions.height.to_i
+            record.errors.add(attribute.to_sym, 'height is exceeding the maximum')
+          end
+          
+          if options[:max_width] && options[:max_width] < dimensions.width.to_i
+            record.errors.add(attribute.to_sym, 'width is exceeding the maximum')
+          end
         rescue Paperclip::Errors::NotIdentifiedByImageMagickError
           Paperclip.log("cannot validate dimensions on #{attribute}")
         end
