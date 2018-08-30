@@ -2,7 +2,6 @@ module Paperclip
   module Validators
     class AttachmentDimensionsValidator < ActiveModel::EachValidator
       def initialize(options)
-        pp options
         super
       end
 
@@ -21,7 +20,7 @@ module Paperclip
               record.errors.add(attribute.to_sym, :dimension, dimension_type: dimension.to_s, dimension: options[dimension], actual_dimension: dimensions.send(dimension).to_i)
             end
 
-            if options[dimension] && dimensions.send(dimension) >= options["max_#{dimension}"].to_f
+            if options["max_#{dimension}".to_sym] && dimensions.send(dimension) >= options["max_#{dimension}".to_sym].to_f
               record.errors.add(attribute.to_sym,
                                 :max_dimension,
                                 dimension_type: dimension.to_s,
