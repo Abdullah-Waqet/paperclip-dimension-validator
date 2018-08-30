@@ -19,10 +19,15 @@ module Paperclip
             if options[dimension] && dimensions.send(dimension) != options[dimension].to_f
               record.errors.add(attribute.to_sym, :dimension, dimension_type: dimension.to_s, dimension: options[dimension], actual_dimension: dimensions.send(dimension).to_i)
             end
+
             pp '++++++++++++++'
             pp "max_#{dimension}".to_sym
+            pp '++++++sys++++++++'
+            pp options["max_#{dimension}".to_sym].to_f
+            pp '++++++++++++++'
             pp options
             pp '++++++++++++++'
+
             if options[dimension] && dimensions.send(dimension) >= options["max_#{dimension}".to_sym].to_f
               record.errors.add(attribute.to_sym,
                                 :max_dimension,
