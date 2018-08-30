@@ -23,9 +23,9 @@ module Paperclip
             pp '++++++++++++++'
             pp "max_#{dimension}".to_sym
             pp '++++++sys++++++++'
-            pp options["max_#{dimension}".to_sym].to_f
+            pp options[dimension] && dimensions.send(dimension)
             pp '++++++++++++++'
-            pp options
+            pp options[dimension] && dimensions.send(dimension) >= options["max_#{dimension}".to_sym].to_f
             pp '++++++++++++++'
 
             if options[dimension] && dimensions.send(dimension) >= options["max_#{dimension}".to_sym].to_f
