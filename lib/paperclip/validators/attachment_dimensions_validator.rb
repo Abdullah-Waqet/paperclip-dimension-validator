@@ -28,7 +28,7 @@ module Paperclip
             pp options["max_#{dimension}".to_sym] && dimensions.send(dimension) >= options["max_#{dimension}".to_sym].to_f
             pp '++++++++++++++'
 
-            if options[dimension] && dimensions.send(dimension) >= options["max_#{dimension}".to_sym].to_f
+            if options["max_#{dimension}".to_sym] && dimensions.send(dimension) >= options["max_#{dimension}".to_sym].to_f
               record.errors.add(attribute.to_sym,
                                 :max_dimension,
                                 dimension_type: dimension.to_s,
